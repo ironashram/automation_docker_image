@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
             push: true
-            tags: m1k_cloud/automation_docker_image:latest
+            tags: quay.io/m1k_cloud/automation_docker_image:latest
