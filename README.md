@@ -1,4 +1,4 @@
-# Automation Runner
+# Automation Docker Image
 
 ## Purpose
 
