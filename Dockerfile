@@ -17,6 +17,7 @@ RUN apt-get update && \
     curl \
     dumb-init \
     git \
+    inetutils-ping \
     python3-pip \
     unzip \
     vim \
