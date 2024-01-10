@@ -20,5 +20,6 @@ jobs:
       - name: Build and publish image to Quay
         uses: docker/build-push-action@v5
         with:
+            provenance: false
             push: true
             tags: quay.io/m1k_cloud/automation_docker_image:latest
