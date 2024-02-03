@@ -23,6 +23,7 @@ RUN apt-get update && \
     vim \
     wget \
     && pip3 install ansible==${ANSIBLE_VERSION} \
+    && pip3 install python-hvac \
     && curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash -s -- -v ${HELM_VERSION} \
     && curl -L https://dl.k8s.io/release/${K8S_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && curl -L -o - https://github.com/vmware/govmomi/releases/download/${GOVC_VERSION}/govc_$(uname -s)_$(uname -m).tar.gz | tar -C /usr/local/bin -xvzf - govc \
