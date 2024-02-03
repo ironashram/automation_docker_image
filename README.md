@@ -4,7 +4,7 @@
 
 Image containing multiple automation tools for predictable results.
 
-## Versions
+## Tools
 
 | Tool          | Version   | Project Link                                                                 |
 |---------------|-----------|------------------------------------------------------------------------------|
