@@ -15,7 +15,6 @@ jobs:
           images: |
             quay.io/m1k_cloud/automation_docker_image
           tags: |
-            latest
             type=semver,pattern={{raw}}
 
       - name: Set up Docker Buildx
