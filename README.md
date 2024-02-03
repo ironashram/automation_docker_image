@@ -16,4 +16,3 @@ Image containing multiple automation tools for predictable results.
 | Terraform     | 1.7.2     | [Terraform](https://github.com/hashicorp/terraform)                          |
 | Kubernetes    | v1.28.5   | [Kubernetes](https://github.com/kubernetes/kubernetes)                       |
 | Helm          | v3.13.3   | [Helm](https://github.com/helm/helm)                                         |
-|---------------|-----------|------------------------------------------------------------------------------|
