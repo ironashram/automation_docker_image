@@ -1,11 +1,11 @@
 FROM ubuntu:jammy
 
-ARG ANSIBLE_VERSION="9.2.0"
-ARG GOVC_VERSION="v0.34.2"
-ARG PACKER_VERSION="1.10.1"
-ARG TERRAFORM_VERSION="1.7.2"
-ARG K8S_VERSION="v1.28.5"
-ARG HELM_VERSION="v3.13.3"
+ARG ANSIBLE_VERSION="10.2.0"
+ARG GOVC_VERSION="v0.39.0"
+ARG PACKER_VERSION="1.11.1"
+ARG TERRAFORM_VERSION="1.9.3"
+ARG KUBECTL_VERSION="v1.30.3"
+ARG HELM_VERSION="v3.15.3"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=True
@@ -33,7 +33,7 @@ RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
     | bash -s -- -v ${HELM_VERSION}
 
 # Install kubectl
-RUN curl -L https://dl.k8s.io/release/${K8S_VERSION}/bin/linux/amd64/kubectl \
+RUN curl -L https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
     -o /usr/local/bin/kubectl
 
 # Install govc
