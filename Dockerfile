@@ -43,7 +43,7 @@ RUN curl -L -o - https://github.com/vmware/govmomi/releases/download/${GOVC_VERS
 # Install Terraform and Packer
 RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip \
-    && unzip '*.zip' -d /usr/local/bin \
+    && unzip -o '*.zip' -d /usr/local/bin \
     && rm *.zip \
     && chmod +x /usr/local/bin/*
 
