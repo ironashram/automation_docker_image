@@ -19,14 +19,14 @@ RUN apt-get update && \
     dumb-init \
     git \
     inetutils-ping \
-    python3-pip \
+    pipx \
     unzip \
     vim \
     wget
 
 # Install Ansible and hvac Python packages
-RUN pip3 install ansible==${ANSIBLE_VERSION} \
-    && pip3 install hvac
+RUN pipx install ansible==${ANSIBLE_VERSION} \
+    && pipx install hvac
 
 # Install Helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
