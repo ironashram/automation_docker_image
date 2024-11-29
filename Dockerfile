@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 ARG ANSIBLE_VERSION="11.0.0"
 ARG GOVC_VERSION="v0.46.2"
