@@ -1,11 +1,12 @@
 FROM ubuntu:noble
 
-ARG ANSIBLE_VERSION="11.0.0"
-ARG GOVC_VERSION="v0.46.2"
+ARG ANSIBLE_VERSION="11.1.0"
+ARG GOVC_VERSION="v0.46.3"
 ARG PACKER_VERSION="1.11.2"
-ARG TERRAFORM_VERSION="1.10.0"
-ARG KUBECTL_VERSION="v1.31.3"
-ARG HELM_VERSION="v3.16.3"
+ARG TERRAFORM_VERSION="1.10.3"
+ARG KUBECTL_VERSION="v1.31.4"
+ARG HELM_VERSION="v3.16.4"
+ARG K3SUP_VERSION="0.13.6"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=True
@@ -15,6 +16,7 @@ ENV TZ=UTC
 RUN apt-get update && \
     apt-get install -y bash \
     bash-completion \
+    openssh-client \
     curl \
     dumb-init \
     git \
@@ -47,6 +49,11 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terra
     && unzip -o '*.zip' -d /usr/local/bin \
     && rm *.zip \
     && chmod +x /usr/local/bin/*
+
+# Install k3sup
+RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSION}/k3sup > k3sup \
+    && chmod +x k3sup \
+    && mv k3sup /usr/bin/k3sup
 
 # Clean up
 RUN apt-get clean autoclean; \
