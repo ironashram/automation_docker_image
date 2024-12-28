@@ -13,3 +13,13 @@ Docker image containing multiple automation tools.
 | Kubectl       | https://github.com/kubernetes/kubernetes                                     |
 | Helm          | https://github.com/helm/helm                                                 |
 | K3sup         | https://github.com/alexellis/k3sup                                           |
+
+
+## Usage
+
+This Docker image is used in the following projects:
+
+- [kub1k](https://github.com/ironashram/kub1k)
+- [mail-matrix-server](https://github.com/ironashram/mail-matrix-server)
+- [m1k.cloud](https://github.com/ironashram/m1k.cloud)
+- [metapac](https://github.com/ironashram/metapac)
