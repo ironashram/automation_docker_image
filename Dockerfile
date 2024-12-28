@@ -10,6 +10,7 @@ ARG K3SUP_VERSION="0.13.6"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=True
+ENV PATH="$PATH:/root/.local/bin"
 ENV TZ=UTC
 
 # Install required packages
