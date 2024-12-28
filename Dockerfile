@@ -28,9 +28,10 @@ RUN apt-get update && \
     vim \
     wget
 
-# Install Ansible
+# Install Ansible and hvac
 RUN pipx ensurepath \
-    && pipx install --include-deps ansible==${ANSIBLE_VERSION}
+    && pipx install --include-deps ansible==${ANSIBLE_VERSION} \
+    && pipx inject ansible hvac
 
 # Install Helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
