@@ -1,0 +1,36 @@
+name: Update Dockerfile
+
+on:
+  schedule:
+    - cron: '0 7 * * SAT'
+  workflow_dispatch:
+
+jobs:
+  update-dockerfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run update script
+        run: python update_dockerfile.py
+
+      - name: Commit and push changes
+        if: success()
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Dockerfile
+          git commit -m 'Update Dockerfile with latest versions'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
