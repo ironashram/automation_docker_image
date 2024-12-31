@@ -21,6 +21,7 @@ RUN apt-get update && \
     curl \
     dumb-init \
     git \
+    make \
     inetutils-ping \
     python3-hvac \
     pipx \
