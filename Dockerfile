@@ -19,24 +19,24 @@ RUN apt-get update && \
     atop \
     bash \
     bash-completion \
-    openssh-client \
     conntrack \
     curl \
     dnsutils \
     dumb-init \
     git \
     htop \
+    inetutils-ping \
+    iproute2 \
+    iptables \
     jq \
     linux-tools-common \
     make \
-    net-tools \
     ncat \
+    net-tools \
+    openssh-client \
     openssl \
-    inetutils-ping \
-    iptables \
-    iproute2 \
-    python3-hvac \
     pipx \
+    python3-hvac \
     strace \
     sudo \
     tcpdump \
