@@ -15,17 +15,32 @@ ENV TZ=UTC
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y bash \
+    apt-get install -y \
+    atop \
+    bash \
     bash-completion \
     openssh-client \
+    conntrack \
     curl \
+    dnsutils \
     dumb-init \
     git \
+    htop \
     jq \
+    linux-tools-common \
     make \
+    net-tools \
+    ncat \
+    openssl \
     inetutils-ping \
+    iptables \
+    iproute2 \
     python3-hvac \
     pipx \
+    strace \
+    sudo \
+    tcpdump \
+    telnet \
     unzip \
     vim \
     wget
