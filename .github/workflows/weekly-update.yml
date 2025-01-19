@@ -8,8 +8,6 @@ on:
 jobs:
   update-dockerfile:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout repository
@@ -31,6 +29,8 @@ jobs:
       - name: Commit and push changes
         if: success()
         run: |
+          git config --global user.name 'ironashram'
+          git config --global user.email 'sysdadmin@m1k.cloud'
           git add Dockerfile
           if git diff --cached --quiet; then
             echo "No changes to commit"
