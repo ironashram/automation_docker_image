@@ -1,4 +1,4 @@
-name: Weekly Dockerfile Update
+name: Weekly Update
 
 on:
   schedule:
@@ -44,4 +44,4 @@ jobs:
             git push origin $new_tag
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
