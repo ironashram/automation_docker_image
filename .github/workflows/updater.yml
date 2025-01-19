@@ -18,13 +18,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Install dependencies
         run: pip install requests
 
       - name: Run update script
-        run: python update_dockerfile.py
+        run: python tools/update_dockerfile.py
 
       - name: Commit and push changes
         if: success()
@@ -37,6 +37,22 @@ jobs:
           else
             git commit -m "chore: update Dockerfile with latest dependency versions"
             git push
+            echo "BUMP_VERSION=true" >> $GITHUB_ENV
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run version bump script
+        if: ${{ env.BUMP_VERSION == 'true' }}
+        run: |
+          new_tag=$(python tools/bump_version.py)
+          echo "new_tag=$new_tag" >> $GITHUB_ENV
+
+      - name: Push new tag
+        if: ${{ env.BUMP_VERSION == 'true' }}
+        run: |
+          new_tag=${{ env.new_tag }}
+          git tag $new_tag
+          git push origin $new_tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
