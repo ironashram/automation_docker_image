@@ -27,7 +27,6 @@ jobs:
         run: python tools/update_dockerfile.py
 
       - name: Commit and push changes
-        id: bump_version
         if: success()
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -38,16 +37,9 @@ jobs:
           else
             git commit -m "chore: update Dockerfile with latest dependency versions"
             git push
-            echo "BUMP_VERSION=true" >> $GITHUB_OUTPUT
+            new_tag=$(python tools/bump_version.py)
+            git tag $new_tag
+            git push origin $new_tag
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push new tag
-        if: ${{ steps.bump_version.outputs.BUMP_VERSION == 'true' }}
-        run: |
-          new_tag=$(python tools/bump_version.py)
-          git tag $new_tag
-          git push origin $new_tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
