@@ -27,6 +27,7 @@ jobs:
         run: python tools/update_dockerfile.py
 
       - name: Commit and push changes
+        id: bump_version
         if: success()
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -42,16 +43,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run version bump script
-        if: ${{ env.BUMP_VERSION == 'true' }}
+      - name: Push new tag
+        if: ${{ steps.bump_version.outputs.BUMP_VERSION == 'true' }}
         run: |
           new_tag=$(python tools/bump_version.py)
-          echo "new_tag=$new_tag" >> $GITHUB_ENV
-
-      - name: Push new tag
-        if: ${{ env.BUMP_VERSION == 'true' }}
-        run: |
-          new_tag=${{ env.new_tag }}
           git tag $new_tag
           git push origin $new_tag
         env:
