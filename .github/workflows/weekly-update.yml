@@ -37,7 +37,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update Dockerfile with latest dependency versions"
+            git commit -m "chore: update Dockerfile with latest versions"
             git push
             new_tag=$(python tools/bump_version.py)
             git tag $new_tag
