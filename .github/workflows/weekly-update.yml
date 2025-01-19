@@ -37,8 +37,8 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: update Dockerfile with latest dependency versions"
-            git push
-            echo "BUMP_VERSION=true" >> $GITHUB_ENV
+            git pushc
+            echo "BUMP_VERSION=true" >> $GITHUB_OUTPUT
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
