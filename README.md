@@ -1,3 +1,6 @@
+[![Weekly Update](https://github.com/ironashram/automation_docker_image/actions/workflows/weekly-update.yml/badge.svg)](https://github.com/ironashram/automation_docker_image/actions/workflows/weekly-update.yml)
+[![Docker Image Build](https://github.com/ironashram/automation_docker_image/actions/workflows/docker-image.yml/badge.svg)](https://github.com/ironashram/automation_docker_image/actions/workflows/docker-image.yml)
+
 # Automation Docker Image
 
 Docker image containing multiple automation tools.
