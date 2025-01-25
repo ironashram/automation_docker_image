@@ -24,9 +24,8 @@ Docker image containing multiple automation tools.
 docker pull quay.io/m1k_cloud/automation_docker_image:latest
 ```
 
-## Projects Using This Image
 
-This image is utilized in the following projects:
+## Projects Using This Image
 
 - [kub1k](https://github.com/ironashram/kub1k)
 - [mail-matrix-server](https://github.com/ironashram/mail-matrix-server)
