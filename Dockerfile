@@ -35,9 +35,9 @@ RUN apt-get update && \
     openssh-client \
     openssl \
     pipx \
-    python-hvac \
-    python-pip \
-    python-semver \
+    python3-hvac \
+    python3-pip \
+    python3-semver \
     strace \
     sudo \
     tcpdump \
