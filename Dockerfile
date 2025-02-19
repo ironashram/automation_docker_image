@@ -46,7 +46,7 @@ RUN apt-get update && \
     vim \
     wget
 
-RUN pip install --break-system-packages hcl2
+RUN pip install --break-system-packages python-hcl2
 
 RUN pipx ensurepath \
     && pipx install --include-deps ansible==${ANSIBLE_VERSION} \
