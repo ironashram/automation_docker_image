@@ -13,7 +13,6 @@ ENV PYTHONDONTWRITEBYTECODE=True
 ENV PATH="$PATH:/root/.local/bin"
 ENV TZ=UTC
 
-# Install required packages
 RUN apt-get update && \
     apt-get install -y \
     atop \
@@ -36,7 +35,9 @@ RUN apt-get update && \
     openssh-client \
     openssl \
     pipx \
-    python3-hvac \
+    python-hvac \
+    python-pip \
+    python-semver \
     strace \
     sudo \
     tcpdump \
@@ -45,36 +46,31 @@ RUN apt-get update && \
     vim \
     wget
 
-# Install Ansible and hvac
+RUN pip install --break-system-packages hcl2
+
 RUN pipx ensurepath \
     && pipx install --include-deps ansible==${ANSIBLE_VERSION} \
     && pipx inject ansible hvac
 
-# Install Helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
     | bash -s -- -v ${HELM_VERSION}
 
-# Install kubectl
 RUN curl -L https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
     -o /usr/local/bin/kubectl
 
-# Install govc
 RUN curl -L -o - https://github.com/vmware/govmomi/releases/download/${GOVC_VERSION}/govc_$(uname -s)_$(uname -m).tar.gz \
     | tar -C /usr/local/bin -xvzf - govc
 
-# Install Terraform and Packer
 RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip \
     && unzip -o '*.zip' -d /usr/local/bin \
     && rm *.zip \
     && chmod +x /usr/local/bin/*
 
-# Install k3sup
 RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSION}/k3sup > k3sup \
     && chmod +x k3sup \
     && mv k3sup /usr/bin/k3sup
 
-# Clean up
 RUN apt-get clean autoclean; \
     apt-get autoremove --yes; \
     rm -rf /var/lib/{apt,dpkg,cache,log}/
