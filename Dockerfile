@@ -68,9 +68,10 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terra
     && rm *.zip \
     && chmod +x /usr/local/bin/*
 
-RUN curl -LO https://github.com/opentofu/opentofu/releases/download/${OPENTOFU_VERSION}/tofu_${OPENTOFU_VERSION}_linux_amd64.zip \
-    && unzip tofu_${OPENTOFU_VERSION}_linux_amd64.zip -d /usr/local/bin \
-    && rm tofu_${OPENTOFU_VERSION}_linux_amd64.zip \
+RUN OPENTOFU_VERSION_STRIPPED=$(echo ${OPENTOFU_VERSION} | sed 's/^v//') \
+    && curl -LO https://github.com/opentofu/opentofu/releases/download/${OPENTOFU_VERSION}/tofu_${OPENTOFU_VERSION_STRIPPED}_linux_amd64.zip \
+    && unzip tofu_${OPENTOFU_VERSION_STRIPPED}_linux_amd64.zip -d /usr/local/bin \
+    && rm tofu_${OPENTOFU_VERSION_STRIPPED}_linux_amd64.zip \
     && chmod +x /usr/local/bin/tofu
 
 RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSION}/k3sup > k3sup \
