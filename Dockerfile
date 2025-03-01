@@ -4,6 +4,7 @@ ARG ANSIBLE_VERSION="11.3.0"
 ARG GOVC_VERSION="v0.48.1"
 ARG PACKER_VERSION="1.12.0"
 ARG TERRAFORM_VERSION="1.11.0"
+ARG OPENTOFU_VERSION="1.9.0"
 ARG KUBECTL_VERSION="v1.32.2"
 ARG HELM_VERSION="v3.17.1"
 ARG K3SUP_VERSION="0.13.8"
@@ -66,6 +67,11 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terra
     && unzip -o '*.zip' -d /usr/local/bin \
     && rm *.zip \
     && chmod +x /usr/local/bin/*
+
+RUN curl -LO https://github.com/opentofu/opentofu/releases/download/${OPENTOFU_VERSION}/tofu_${OPENTOFU_VERSION}_linux_amd64.zip \
+    && unzip tofu_${OPENTOFU_VERSION}_linux_amd64.zip -d /usr/local/bin \
+    && rm tofu_${OPENTOFU_VERSION}_linux_amd64.zip \
+    && chmod +x /usr/local/bin/tofu
 
 RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSION}/k3sup > k3sup \
     && chmod +x k3sup \

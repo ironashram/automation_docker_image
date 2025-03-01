@@ -6,6 +6,7 @@ urls = {
     "GOVC_VERSION": "https://api.github.com/repos/vmware/govmomi/releases/latest",
     "PACKER_VERSION": "https://api.github.com/repos/hashicorp/packer/releases/latest",
     "TERRAFORM_VERSION": "https://api.github.com/repos/hashicorp/terraform/releases/latest",
+    "OPENTOFU_VERSION": "https://api.github.com/repos/alexellis/opentofu/releases/latest",
     "KUBECTL_VERSION": "https://api.github.com/repos/kubernetes/kubernetes/releases/latest",
     "HELM_VERSION": "https://api.github.com/repos/helm/helm/releases/latest",
     "K3SUP_VERSION": "https://api.github.com/repos/alexellis/k3sup/releases/latest"
