@@ -13,7 +13,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            quay.io/m1k_cloud/automation_docker_image
+            quay.io/m1k_cloud/toolbox
           tags: |
             type=semver,pattern={{raw}}
 
