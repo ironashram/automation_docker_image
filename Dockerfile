@@ -8,6 +8,7 @@ ARG OPENTOFU_VERSION="v1.9.0"
 ARG KUBECTL_VERSION="v1.32.3"
 ARG HELM_VERSION="v3.17.3"
 ARG K3SUP_VERSION="0.13.8"
+ARG AWSCLI_VERSION="2.22.35"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=True
@@ -39,6 +40,7 @@ RUN apt-get update && \
     python3-hvac \
     python3-pip \
     python3-semver \
+    s3cmd \
     strace \
     sudo \
     tcpdump \
@@ -73,6 +75,11 @@ RUN OPENTOFU_VERSION_STRIPPED=$(echo ${OPENTOFU_VERSION} | sed 's/^v//') \
     && unzip tofu_${OPENTOFU_VERSION_STRIPPED}_linux_amd64.zip -d /usr/local/bin \
     && rm tofu_${OPENTOFU_VERSION_STRIPPED}_linux_amd64.zip \
     && chmod +x /usr/local/bin/tofu
+
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWSCLI_VERSION}.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && ./aws/install \
+    && rm -rf aws awscliv2.zip
 
 RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSION}/k3sup > k3sup \
     && chmod +x k3sup \
