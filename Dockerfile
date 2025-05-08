@@ -20,6 +20,7 @@ RUN apt-get update && \
     atop \
     bash \
     bash-completion \
+    ca-certificates \
     conntrack \
     curl \
     dnsutils \
@@ -30,7 +31,6 @@ RUN apt-get update && \
     iproute2 \
     iptables \
     jq \
-    linux-tools-common \
     make \
     ncat \
     net-tools \
@@ -47,7 +47,10 @@ RUN apt-get update && \
     telnet \
     unzip \
     vim \
-    wget
+    wget && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 RUN pip install --break-system-packages python-hcl2
 
@@ -85,9 +88,6 @@ RUN curl -sSL https://github.com/alexellis/k3sup/releases/download/${K3SUP_VERSI
     && chmod +x k3sup \
     && mv k3sup /usr/bin/k3sup
 
-RUN apt-get clean autoclean; \
-    apt-get autoremove --yes; \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/bin/bash"]
