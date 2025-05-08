@@ -1,4 +1,4 @@
-FROM ubuntu:noble-slim
+FROM debian:stable-slim
 
 ARG ANSIBLE_VERSION="11.5.0"
 ARG GOVC_VERSION="v0.50.0"
