@@ -22,7 +22,7 @@ Docker image containing multiple automation tools.
 ## Usage
 
 ```sh
-docker pull quay.io/m1k_cloud/toolbox:latest
+docker pull ghcr.io/ironashram/toolbox:latest
 ```
 
 
